@@ -1,15 +1,15 @@
 const got = require('got')
 
-async function run () {
+async function run (canvasCourseId, sisCourseId) {
   const res = await got('http://localhost:3000/graphql', {
     method: 'POST',
     json: true,
     body: { query: `
     mutation{
-      createLadokAssignments(id:10001, sisCourseId: "aoe")
+      createLadokAssignments(id:${canvasCourseId}, sisCourseId: "${sisCourseId}")
     }`
     }
   })
   console.log(res.body)
 }
-run()
+run(8058, 'SE2134VT191')

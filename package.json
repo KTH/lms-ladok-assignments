@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/KTH/lms-ladok-assignments#readme",
   "dependencies": {
+    "@kth/canvas-api": "^2.1.0-beta.2",
     "bunyan": "^1.8.12",
     "dotenv": "^8.0.0",
     "express-graphql": "^0.9.0",
