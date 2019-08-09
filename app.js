@@ -5,7 +5,8 @@ const logger = require('./logger')
 const expressGraphql = require('express-graphql')
 const { buildSchema } = require('graphql')
 
-async function createLadokAssignments () {
+async function createLadokAssignments ({ id, sisCourseId }) {
+  console.log(id, sisCourseId)
   return false
 }
 
@@ -15,7 +16,7 @@ var schema = buildSchema(`
         course: Course
     },
     type Mutation {
-      createLadokAssignments(course: Course!): Boolean
+      createLadokAssignments(id: Int! , sisCourseId: String!): Boolean
     }
     type Course {
         id: Int!
