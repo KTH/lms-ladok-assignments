@@ -13,14 +13,10 @@ async function createLadokAssignments ({ id, sisCourseId }) {
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        course: Course
+        id: Int!
     },
     type Mutation {
       createLadokAssignments(id: Int! , sisCourseId: String!): Boolean
-    }
-    type Course {
-        id: Int!
-        sisCourseId: String!
     }
 `)
 
