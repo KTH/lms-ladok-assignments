@@ -13,7 +13,7 @@ async function createLadokAssignments ({ id, sisCourseId }) {
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        id: Int!
+      message: String
     },
     type Mutation {
       createLadokAssignments(id: Int! , sisCourseId: String!): Boolean
@@ -25,7 +25,8 @@ app.use('/api/lms-sync-courses/', require('./systemroutes'))
 app.use('/graphql', expressGraphql({
   schema: schema,
   rootValue: {
-    createLadokAssignments
+    createLadokAssignments,
+    message: () => 'Hello World!'
   },
   graphiql: true
 }))
