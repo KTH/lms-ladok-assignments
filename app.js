@@ -8,8 +8,9 @@ const expressGraphql = require('express-graphql')
 const { buildSchema } = require('graphql')
 
 // TODO: some sort of auth? Signed secret perhaps?
-async function createLadokAssignments ({ id, sisCourseId }) {
+async function createLadokAssignments ({ sisCourseId }) {
   console.log('create assignments for ', sisCourseId)
+  const id = `sis_course_id:${sisCourseId}`
   const assignments = await canvas.list(`/courses/${id}/assignments`).toArray()
 
   const [, courseCode, term, year] = sisCourseId.match(/(.*)(VT|HT)(\d{2})\d/)
@@ -71,7 +72,7 @@ var schema = buildSchema(`
       message: String
     },
     type Mutation {
-      createLadokAssignments(id: Int! , sisCourseId: String!): Boolean
+      createLadokAssignments(sisCourseId: String!): Boolean
     }
 `)
 
