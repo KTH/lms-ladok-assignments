@@ -1,7 +1,7 @@
 const got = require('got')
 
 async function run (canvasCourseId, sisCourseId) {
-  const res = await got('http://localhost:3000/graphql', {
+  const res = await got('http://localhost:3002/graphql', {
     method: 'POST',
     json: true,
     body: { query: `
@@ -12,4 +12,4 @@ async function run (canvasCourseId, sisCourseId) {
   })
   console.log(res.body)
 }
-run(8058, 'SE2134VT191')
+run(3719, 'A11HIBHT171')

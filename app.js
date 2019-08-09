@@ -7,6 +7,7 @@ const canvas = require('@kth/canvas-api')(process.env.CANVAS_API_URL, process.en
 const expressGraphql = require('express-graphql')
 const { buildSchema } = require('graphql')
 
+// TODO: some sort of auth? Signed secret perhaps?
 async function createLadokAssignments ({ id, sisCourseId }) {
   console.log('create assignments for ', sisCourseId)
   const assignments = await canvas.list(`/courses/${id}/assignments`).toArray()
@@ -86,6 +87,6 @@ app.use('/graphql', expressGraphql({
 }))
 
 app.start({
-  port: 3000,
+  port: 3002,
   logger
 })
