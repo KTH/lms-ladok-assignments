@@ -5,17 +5,21 @@ const logger = require('./logger')
 const expressGraphql = require('express-graphql')
 const { buildSchema } = require('graphql')
 
+async function createLadokAssignments () {
+  return false
+}
+
 // GraphQL schema
 var schema = buildSchema(`
     type Query {
-        course(id: Int!): Course
-        courses(topic: String): [Course]
+        course: Course
     },
     type Mutation {
-      createLadokAssignments(id: Int! , sisCourseId: String!): Boolean
+      createLadokAssignments(course: Course!): Boolean
     }
     type Course {
-        id: Int
+        id: Int!
+        sisCourseId: String!
     }
 `)
 
@@ -24,10 +28,7 @@ app.use('/api/lms-sync-courses/', require('./systemroutes'))
 app.use('/graphql', expressGraphql({
   schema: schema,
   rootValue: {
-    createLadokAssignments: ({ id, sisCourseId }) => {
-      console.log('Helloooo!')
-      return true
-    }
+    createLadokAssignments
   },
   graphiql: true
 }))
